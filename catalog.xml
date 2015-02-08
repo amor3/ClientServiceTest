@@ -2,4 +2,7 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/Availability/Availability?wsdl" uri="src/conf/xml-resources/web-service-references/Availability/wsdl/localhost_8080/Availability/Availability.wsdl"/>
     <system systemId="http://localhost:8080/Availability/Availability?xsd=1" uri="src/conf/xml-resources/web-service-references/Availability/wsdl/localhost_8080/Availability/Availability.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/RouteService/RouteService?wsdl" uri="src/conf/xml-resources/web-service-references/RouteService/wsdl/localhost_8080/RouteService/RouteService.wsdl"/>
+    <system systemId="http://localhost:8080/RouteService/RouteService?xsd=1" uri="src/conf/xml-resources/web-service-references/RouteService/wsdl/localhost_8080/RouteService/RouteService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/BookingServiceService/NewWebServiceFromWSDL?wsdl" uri="src/conf/xml-resources/web-service-references/NewWebServiceFromWSDL/wsdl/localhost_8080/BookingServiceService/NewWebServiceFromWSDL.wsdl"/>
 </catalog>

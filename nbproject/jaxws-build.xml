@@ -42,5 +42,37 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/service"/>
         <delete dir="${build.generated.dir}/jax-wsCache/Availability"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-Availability"/>
+    <target name="wsimport-client-RouteService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/RouteService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/RouteService" destdir="${build.generated.dir}/jax-wsCache/RouteService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/RouteService/wsdl/localhost_8080/RouteService/RouteService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/RouteService/RouteService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/RouteService/wsdl/localhost_8080/RouteService/RouteService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/RouteService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/RouteService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-RouteService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/service"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/RouteService"/>
+    </target>
+    <target name="wsimport-client-NewWebServiceFromWSDL" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/NewWebServiceFromWSDL"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/NewWebServiceFromWSDL" destdir="${build.generated.dir}/jax-wsCache/NewWebServiceFromWSDL" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/NewWebServiceFromWSDL/wsdl/localhost_8080/BookingServiceService/NewWebServiceFromWSDL.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/BookingServiceService/NewWebServiceFromWSDL?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/NewWebServiceFromWSDL/wsdl/localhost_8080/BookingServiceService/NewWebServiceFromWSDL.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/NewWebServiceFromWSDL"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/NewWebServiceFromWSDL">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-NewWebServiceFromWSDL" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/netbeans/j2ee/wsdl/bookingservice/java/bookingservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/NewWebServiceFromWSDL"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-Availability, wsimport-client-RouteService, wsimport-client-NewWebServiceFromWSDL"/>
 </project>
