@@ -74,5 +74,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/org/netbeans/j2ee/wsdl/bookingservice/java/bookingservice"/>
         <delete dir="${build.generated.dir}/jax-wsCache/NewWebServiceFromWSDL"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-Availability, wsimport-client-RouteService, wsimport-client-NewWebServiceFromWSDL"/>
+    <target name="wsimport-client-AuthorizationService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/AuthorizationService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/AuthorizationService" destdir="${build.generated.dir}/jax-wsCache/AuthorizationService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/AuthorizationService/wsdl/localhost_8080/AuthorizationServiceService/AuthorizationService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/AuthorizationServiceService/AuthorizationService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/AuthorizationService/wsdl/localhost_8080/AuthorizationServiceService/AuthorizationService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/AuthorizationService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/AuthorizationService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-AuthorizationService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/netbeans/j2ee/wsdl/authorizationservice/java/authorizationservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/AuthorizationService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-Availability, wsimport-client-RouteService, wsimport-client-NewWebServiceFromWSDL, wsimport-client-AuthorizationService"/>
 </project>

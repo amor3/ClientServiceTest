@@ -1,0 +1,136 @@
+run:
+---[HTTP request - http://localhost:8080/AuthorizationServiceService/AuthorizationService]---
+Accept: text/xml, multipart/related
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+User-Agent: Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:AuthorizationServiceOperation xmlns:ns2="http://j2ee.netbeans.org/wsdl/AuthorizationService/java/AuthorizationService">
+            <username>andre</username>
+            <password>word</password>
+        </ns2:AuthorizationServiceOperation>
+    </S:Body>
+</S:Envelope>--------------------
+
+---[HTTP response - http://localhost:8080/AuthorizationServiceService/AuthorizationService - 200]---
+null: HTTP/1.1 200 OK
+Content-Type: text/xml;charset=utf-8
+Date: Mon, 09 Feb 2015 15:58:15 GMT
+Server: grizzly/2.3.1
+Transfer-Encoding: chunked
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:AuthorizationServiceOperationResponse xmlns:ns2="http://j2ee.netbeans.org/wsdl/AuthorizationService/java/AuthorizationService">
+            <return>true</return>
+        </ns2:AuthorizationServiceOperationResponse>
+    </S:Body>
+</S:Envelope>--------------------
+
+AuthService: true
+---[HTTP request - http://localhost:8080/RouteService/RouteService]---
+Accept: text/xml, multipart/related
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://service/RouteService/checkRouteRequest"
+User-Agent: Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:checkRoute xmlns:ns2="http://service/">
+            <username>andre</username>
+            <password>word</password>
+            <source>oslo</source>
+            <destination>berlin</destination>
+        </ns2:checkRoute>
+    </S:Body>
+</S:Envelope>--------------------
+
+---[HTTP response - http://localhost:8080/RouteService/RouteService - 200]---
+null: HTTP/1.1 200 OK
+Content-Type: text/xml;charset=utf-8
+Date: Mon, 09 Feb 2015 15:58:15 GMT
+Server: grizzly/2.3.1
+Transfer-Encoding: chunked
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:checkRouteResponse xmlns:ns2="http://service/">
+            <return>
+                <maximumCapacity>5</maximumCapacity>
+                <_array>Oslo</_array>
+                <_array>Stockholm</_array>
+                <_array>Berlin</_array>
+            </return>
+        </ns2:checkRouteResponse>
+    </S:Body>
+</S:Envelope>--------------------
+
+RouteService: [Oslo, Stockholm, Berlin]
+---[HTTP request - http://localhost:8080/Availability/Availability]---
+Accept: text/xml, multipart/related
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://service/Availability/checkingRequest"
+User-Agent: Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:checking xmlns:ns2="http://service/">
+            <username>andre</username>
+            <password>word</password>
+            <routes>Oslo:Stockholm:Berlin</routes>
+            <travelDate>28</travelDate>
+        </ns2:checking>
+    </S:Body>
+</S:Envelope>--------------------
+
+---[HTTP response - http://localhost:8080/Availability/Availability - 200]---
+null: HTTP/1.1 200 OK
+Content-Type: text/xml;charset=utf-8
+Date: Mon, 09 Feb 2015 15:58:15 GMT
+Server: grizzly/2.3.1
+Transfer-Encoding: chunked
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:checkingResponse xmlns:ns2="http://service/">
+            <return>
+                <maximumCapacity>5</maximumCapacity>
+                <_array>TICKET_5</_array>
+                <_array>Oslo</_array>
+                <_array>Stockholm</_array>
+                <_array>Berlin</_array>
+                <_array>28</_array>
+                <_array>680 kr</_array>
+            </return>
+        </ns2:checkingResponse>
+    </S:Body>
+</S:Envelope>--------------------
+
+AvailabilityService: [TICKET_5, Oslo, Stockholm, Berlin, 28, 680 kr]
+---[HTTP request - http://localhost:8080/BookingServiceService/NewWebServiceFromWSDL]---
+Accept: application/soap+xml, multipart/related
+Content-Type: application/soap+xml; charset=utf-8
+User-Agent: Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://www.w3.org/2003/05/soap-envelope">
+    <S:Body>
+        <ns3:BookingServiceOperation xmlns:ns2="http://www.mc-boden.se/types/faultTypes" xmlns:ns3="http://j2ee.netbeans.org/wsdl/BookingService/java/BookingService">
+            <username>andre</username>
+            <password>word</password>
+            <ticketID>TICKET_1</ticketID>
+            <creditCardNumber>1234-3213-3333-4423</creditCardNumber>
+        </ns3:BookingServiceOperation>
+    </S:Body>
+</S:Envelope>--------------------
+
+---[HTTP response - http://localhost:8080/BookingServiceService/NewWebServiceFromWSDL - 200]---
+null: HTTP/1.1 200 OK
+Content-Type: application/soap+xml;charset=utf-8
+Date: Mon, 09 Feb 2015 15:58:16 GMT
+Server: grizzly/2.3.1
+Transfer-Encoding: chunked
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://www.w3.org/2003/05/soap-envelope">
+    <S:Body>
+        <ns3:BookingServiceOperationResponse xmlns:ns2="http://www.mc-boden.se/types/faultTypes" xmlns:ns3="http://j2ee.netbeans.org/wsdl/BookingService/java/BookingService">
+            <bookingID>Your ticket is now booked with ID: dd4ec04f-2695-4459-8ac9-f7a4920502bd</bookingID>
+        </ns3:BookingServiceOperationResponse>
+    </S:Body>
+</S:Envelope>--------------------
+
+BookingService: Your ticket is now booked with ID: dd4ec04f-2695-4459-8ac9-f7a4920502bd
+BUILD SUCCESSFUL (total time: 1 second)

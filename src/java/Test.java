@@ -7,15 +7,16 @@ import service.StringArray;
  * @author AMore
  */
 public class Test {
-    
-    
-    public static void main(String... args) throws Fault1{
-    
+
+    public static void main(String... args) throws Fault1 {
+
+        System.out.println("AuthService: " + authorizationServiceOperation("andre", "word"));
+
         System.out.println("RouteService: " + checkRoute("andre", "word", "oslo", "berlin").getArray().toString());
 
         System.out.println("AvailabilityService: " + checking("andre", "word", "Oslo:Stockholm:Berlin", "28").getArray().toString());
-        
-        System.out.println("BookingService: " + bookingServiceOperation("andre", "word", "TICKET_1", "1234-3213-3333-4423") );
+
+        System.out.println("BookingService: " + bookingServiceOperation("andres", "word", "TICKET_1", "1234-3213-3333-4423"));
     }
 
     private static StringArray checking(java.lang.String username, java.lang.String password, java.lang.String routes, java.lang.String travelDate) {
@@ -35,7 +36,11 @@ public class Test {
         org.netbeans.j2ee.wsdl.bookingservice.java.bookingservice.BookingServicePortType port = service.getBookingServicePort();
         return port.bookingServiceOperation(username, password, ticketID, creditCardNumber);
     }
-    
-    
-    
+
+    private static boolean authorizationServiceOperation(java.lang.String username, java.lang.String password) {
+        org.netbeans.j2ee.wsdl.authorizationservice.java.authorizationservice.AuthorizationServiceService service = new org.netbeans.j2ee.wsdl.authorizationservice.java.authorizationservice.AuthorizationServiceService();
+        org.netbeans.j2ee.wsdl.authorizationservice.java.authorizationservice.AuthorizationServicePortType port = service.getAuthorizationServicePort();
+        return port.authorizationServiceOperation(username, password);
+    }
+
 }
